@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="scripts/vendor/angular.js"></script>
+    <script src="scripts/vendor/angular-animate.js"></script>
+    <script src="scripts/controllers/categories.js"></script>
+    <script src="scripts/app.js"></script>
+    <link rel="stylesheet" href="style/style.css">
+    <title>Lab 6</title>
+  </head>
+  <body >
+    <label ng-app="myApp">
+    <input class="my-check" type="checkbox" ng-model="myCheck">
+    <div class="lock" ng-hide="myCheck">
+      <img class="logo" src="img/Shop-Payment.png" alt="logo" ng-hide="myCheck">
+    </div>
+    </label>
+
+    <header>
+      <div class="main">
+        <div class="logo-main">
+          <img src="img/Shop-Payment-main.png" alt="logo">
+        </div>
+        <span class="home">Главная</span>
+        <span ng-app="categories" ng-controller="catCntr" class="categories">Категории</span>
+        <div class="basket">
+          <span>КОРЗИНА</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="carousel">
+
+    </div>
+
+    <div class="baner">
+      <img src="img/baner.jpg">
+    </div>
+
+</body>
+</html>
