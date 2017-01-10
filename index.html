@@ -2,13 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8">
-  
+
     <script src="scripts/vendor/angular.js"></script>
     <script src="scripts/vendor/angular-animate.js"></script>
     <script src="scripts/vendor/angular-aria.min.js"></script>
     <script src="scripts/vendor/jk-carousel.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/categories.js"></script>
+    <script src="scripts/controllers/product.js"></script>
     <script src="scripts/controllers/banner.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.css" />
@@ -18,7 +19,7 @@
     <link rel="stylesheet" href="style/jk-carousel.min.css">
     <title>Lab 6</title>
   </head>
-  <body ng-app="myApp" >
+  <body ng-app="myApp" ng-controller="productCtrl">
     <label >
     <input class="my-check" type="checkbox" ng-model="myCheck">
     <div class="lock" ng-hide="myCheck">
@@ -39,7 +40,7 @@
       </div>
       <div class="category">
         <div class="cat">
-          <div class="category-name" ng-repeat="count in category">
+          <div  class="category-name" ng-repeat="count in category" ng-click="clickCtry($event)">
 
               {{ count.name }}
 
@@ -51,16 +52,25 @@
 
     <div ng-controller="bannerCtrl" class="banner">
       <md-card layout="column" layout-align="center center" style="padding-bottom: 10px" >
-      <jk-carousel
-        data="dataArray"
-        item-template-url="'item-template.html'"
-        max-width="1300"
-        max-height="500"
-        auto-slide="true"
-        auto-slide-time="2000" >
-      </jk-carousel>
-    </md-card>
+        <jk-carousel
+          data="dataArray"
+          item-template-url="'item-template.html'"
+          max-width="1300"
+          max-height="500"
+          auto-slide="true"
+          auto-slide-time="2000" >
+        </jk-carousel>
+      </md-card>
     </div>
 
-</body>
+    <div class="products">
+      <div class="product" ng-repeat="count in products" ng-class="{{count.category[0].name}} == {{name}} ">
+        <div>
+          {{ count.name }}
+        </div>
+
+
+      </div>
+    </div>
+  </body>
 </html>
