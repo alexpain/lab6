@@ -1,6 +1,6 @@
 
 app.controller('catCtrl', function($scope, $http) {
-  
+
   $scope.cat = function () {
     var elem = angular.element(document.querySelector(".home"));
     var categ = angular.element(document.querySelector(".categories"));
@@ -37,9 +37,13 @@ app.controller('catCtrl', function($scope, $http) {
     var banner = angular.element(document.querySelector(".banner"));
     var products = angular.element(document.querySelector(".products"));
     var bigCategory = angular.element(document.querySelector(".big-category"));
+    var products = angular.element(document.querySelector(".products"));
+    var h1 = angular.element(document.querySelector("h1"));
 
     bigCategory.css("display","block");
     catName.css("display", "none");
+    h1.css("display", "none");
+    products.css("display", "none");
 
     category.css("background", "#222")
 

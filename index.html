@@ -13,7 +13,16 @@
     <script src="scripts/controllers/product.js"></script>
     <script src="scripts/controllers/banner.js"></script>
     <script src="scripts/vendor/scrollup.js"></script>
+
+    <script src="scripts/vendor/ui-bootstrap-tpls.js"></script>
+    <script src="scripts/vendor/rzslider.js"></script>
+    <script src="scripts/vendor/demo.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.js"></script>
+
+
+    <link rel="stylesheet" href="style/rzslider.css"/>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -31,9 +40,22 @@
         <img class="logo" src="img/Shop-Payment.png" alt="logo" ng-hide="myCheck">
       </div>
     </label>
+    <div class="basket-window">
+      <div class="header">
+        <img class="close" src="img/close.png" ng-click="close()"/>
+      </div>
+      <div class="main">
+        <div ng-repeat="item in obj">
+          <b>Наименование: </b>{{item[0]}} |
+          <b>Цена: </b>{{item[1]}} руб. |
+          <b>Дата доставки: </b>{{item[2]}}
+          <hr>
+        </div>
+      </div>
+    </div>
     <div class="m-window">
       <div class="header">
-        <img class="close" src="img/close.png" />
+        <img class="close" src="img/close.png" ng-click="close()"/>
       </div>
       <div class="main" ng-controller="bannerCtrl">
         <div class="image">
@@ -60,22 +82,22 @@
 
     <div id="wrap"></div>
 
-    <header ng-controller="catCtrl">
+    <header class="header" ng-controller="catCtrl">
       <div class="main">
         <div class="logo-main">
           <img src="img/Shop-Payment-main.png" alt="logo">
         </div>
         <span class="home" ng-click="home()">Главная</span>
         <span class="categories" ng-click="cat()">Категории</span>
-        <div class="basket">
-          <span>КОРЗИНА</span>
+        <div class="basket" ng-click="basket()">
+          <span >КОРЗИНА</span>
         </div>
       </div>
       <div class="category">
         <div id="big-category" class="big-category">
-          <span>Компьютерная техника</span>
-          <span>Телефония и связь</span>
-          <span>Видео, аудио, фото, оптика</span>
+          <span ng-click="clickCtry($event)">Компьютерная техника</span>
+          <span ng-click="clickCtry($event)">Телефония и связь</span>
+          <span ng-click="clickCtry($event)">Видео, аудио, фото, оптика</span>
         </div>
         <div class="cat">
           <div  class="category-name" ng-repeat="count in category" ng-click="clickCtry($event)">
@@ -103,8 +125,13 @@
     <h1>{{ name }}</h1>
     <div class="products">
       <div class="filter">
-        <label>Имя: <input type="text" name="" value="" ng-model="fName"></label>
-        <label>Бренд: <input type="text" name="" value="" ng-model="fbrand"></label>
+        <label>Название: <input type="text" name="fName" value="" ng-keyup="filter()"></label>
+        <rzslider
+          rz-slider-model="slider.min"
+          rz-slider-high="maxCost"
+          rz-slider-options="slider.options"
+          ng-mouseup="filter()"></rzslider>
+
       </div>
 
       <div class="product" ng-repeat="count in products" >
