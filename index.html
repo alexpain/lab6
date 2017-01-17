@@ -31,6 +31,34 @@
         <img class="logo" src="img/Shop-Payment.png" alt="logo" ng-hide="myCheck">
       </div>
     </label>
+    <div class="m-window">
+      <div class="header">
+        <img class="close" src="img/close.png" />
+      </div>
+      <div class="main" ng-controller="bannerCtrl">
+        <div class="image">
+          <img ng-src="{{ showArr.image[0] }}" />
+        </div>
+        <span class="name" >{{ showArr.name }}</span>
+
+        <div class="discription">{{ showArr.description }}</div>
+        <div class="characteristic" ng-repeat="characteristic in showArr.characteristic">
+          {{characteristic.name}}
+          {{characteristic.value}}
+          <hr>
+        </div>
+
+        <div class="bue">
+          <select class="" name="" >
+            <option ng-repeat="option in showArr.shop" value="{{ option.cost }}">{{ shops[$index].name }} {{ option.cost }} руб.</option>
+          </select>
+          <input type="date" name="date" placeholder="mm/dd/yyyy">
+          <button type="button" name="bue" ng-click="bue()">Купить</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="wrap"></div>
 
     <header ng-controller="catCtrl">
       <div class="main">
@@ -75,21 +103,26 @@
     <h1>{{ name }}</h1>
     <div class="products">
       <div class="filter">
-
+        <label>Имя: <input type="text" name="" value="" ng-model="fName"></label>
+        <label>Бренд: <input type="text" name="" value="" ng-model="fbrand"></label>
       </div>
 
-      <div class="product" ng-repeat="count in products">
+      <div class="product" ng-repeat="count in products" >
         <div class="image">
           <img ng-src="{{ count.image[0] }}" />
         </div>
-
-        <span class="name">{{ count.name }}</span>
+        <label>
+        <span class="name" >{{ count.name }}</span>
 
         <div class="discription">{{ count.description }}</div>
 
         <div class="shop">
-          
+          <div class="cost" ng-repeat="shop in count.shop">
+            <span class="shop-name">{{ shops[$index].name }}</span>
+            {{ shop.cost }} руб.
+          </div>
         </div>
+        <input type="radio" name="index" value="{{$index}} " ng-click="show()"></label>
       </div>
     </div>
 

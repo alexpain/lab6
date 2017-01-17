@@ -1,5 +1,5 @@
 window.onload = function() {
-
+	window.scrollTo(0,0);
 	var up = document.getElementById('scrollup');
   var scrollUp = angular.element(document.querySelector("#scrollup"));
   var bigCategory = angular.element(document.querySelector(".big-category"));
